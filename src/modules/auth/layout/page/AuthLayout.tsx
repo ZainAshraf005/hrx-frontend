@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HrAuth } from "@/assets/image";
 // import { Logo } from "@/assets/image"; // update to your logo import path
 
 interface AuthLayoutProps {
@@ -16,7 +17,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
       {/* Right Section */}
       <div className="hidden md:flex flex-1 bg-bgColor items-center justify-center h-auto w-auto">
         <Image
-        //   src={Logo}
+          src={HrAuth}
           alt="Login Image"
           className="object-fit"
           height={290}

@@ -3,11 +3,11 @@ import Sidebar from "../components/Sidebar";
 
 const { Content, Sider } = Layout;
 
-interface OrgLayoutProps {
+interface EmployeeLayoutProps {
   children: React.ReactNode;
 }
 
-const OrgLayout: React.FC<OrgLayoutProps> = ({ children }) => {
+const EmployeeLayout: React.FC<EmployeeLayoutProps> = ({ children }) => {
   return (
     <Layout
       style={{
@@ -30,4 +30,4 @@ const OrgLayout: React.FC<OrgLayoutProps> = ({ children }) => {
   );
 };
 
-export default OrgLayout;
+export default EmployeeLayout;
