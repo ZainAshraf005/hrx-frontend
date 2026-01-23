@@ -10,10 +10,31 @@ interface LoginFormValues {
   remember: boolean;
 }
 
+/**
+ * Login Component with Role-Based Navigation
+ *
+ * To test different user roles, set the role in localStorage before login:
+ *
+ * For Employee: localStorage.setItem('userRole', 'employee')
+ * For HR/Organization: localStorage.setItem('userRole', 'hr')
+ * For Admin: localStorage.setItem('userRole', 'admin')
+ *
+ * After login, user will be redirected based on their role:
+ * - employee -> /employee
+ * - hr/organization -> /orgnization
+ * - admin -> /admin
+ */
 const Login: React.FC = () => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [loading, setLoading] = React.useState(false);
+  const [currentRole, setCurrentRole] = React.useState<string>("Not Set");
+
+  // Get current role on component mount
+  React.useEffect(() => {
+    const role = localStorage.getItem("userRole");
+    setCurrentRole(role || "Not Set");
+  }, []);
 
   const onFinish = (values: LoginFormValues) => {
     setLoading(true);
@@ -31,10 +52,22 @@ const Login: React.FC = () => {
     // Simulate API call delay
     setTimeout(() => {
       setLoading(false);
-      // Navigate to organization route
-      // router.push("/orgnization");
-      // router.push("/admin");
-      router.push("/employee");
+
+      // Get user role from localStorage
+      const userRole = localStorage.getItem("userRole");
+
+      // Navigate based on role
+      if (userRole === "employee") {
+        router.push("/employee");
+      } else if (userRole === "hr" || userRole === "organization") {
+        router.push("/orgnization");
+      } else if (userRole === "admin") {
+        router.push("/admin");
+      } else {
+        // Default navigation if no role is set (defaults to employee)
+        console.warn("No role found in localStorage, defaulting to employee");
+        router.push("/employee");
+      }
     }, 1000);
   };
 
@@ -102,7 +135,7 @@ const Login: React.FC = () => {
             loading={loading}
             className="w-full bg-blue-600 hover:bg-blue-700 border-0 rounded-lg h-12 text-base font-medium"
           >
-            {loading ? "Signing in..." : "Sign In"}
+            {loading ? "Logging in..." : "Login"}
           </Button>
         </Form.Item>
       </Form>
@@ -116,6 +149,46 @@ const Login: React.FC = () => {
           >
             Sign up
           </a>
+        </p>
+      </div>
+
+      {/* Development Helper - Role Selector */}
+      <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <p className="text-sm font-semibold text-gray-700 mb-3">
+          Test Role (Development Only):
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => {
+              localStorage.setItem("userRole", "employee");
+              setCurrentRole("employee");
+            }}
+            className="px-4 py-2 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 text-sm font-medium transition-colors"
+          >
+            Employee
+          </button>
+          <button
+            onClick={() => {
+              localStorage.setItem("userRole", "hr");
+              setCurrentRole("hr");
+            }}
+            className="px-4 py-2 bg-purple-100 text-purple-700 rounded-md hover:bg-purple-200 text-sm font-medium transition-colors"
+          >
+            HR/Organization
+          </button>
+          <button
+            onClick={() => {
+              localStorage.setItem("userRole", "admin");
+              setCurrentRole("admin");
+            }}
+            className="px-4 py-2 bg-green-100 text-green-700 rounded-md hover:bg-green-200 text-sm font-medium transition-colors"
+          >
+            Admin
+          </button>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">
+          Current Role:{" "}
+          <span className="font-semibold capitalize">{currentRole}</span>
         </p>
       </div>
     </div>

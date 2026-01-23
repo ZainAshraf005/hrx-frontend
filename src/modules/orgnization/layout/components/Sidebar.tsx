@@ -1,5 +1,3 @@
-import { useState } from "react";
-import "./sidebar.scss";
 import Link from "next/link";
 // import {
 //   Setting,
@@ -43,7 +41,7 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className="h-full bg-whiteColor text-white w-full">
+    <div className="h-full bg-[#FFFF] text-white w-full">
       <div className="text-center py-3 mb-4">
       </div>
 

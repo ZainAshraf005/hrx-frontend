@@ -20,8 +20,8 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
           src={HrAuth}
           alt="Login Image"
           className="object-fit"
-          height={290}
-          width={312}
+          // height={290}
+          // width={312}
         />
       </div>
     </div>
