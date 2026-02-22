@@ -58,15 +58,14 @@ const Login: React.FC = () => {
 
       // Navigate based on role
       if (userRole === "employee") {
-        router.push("/employee");
+        router.push("/employee/dashboard");
       } else if (userRole === "hr" || userRole === "organization") {
-        router.push("/orgnization");
+        router.push("/orgnization/dashboard");
       } else if (userRole === "admin") {
-        router.push("/admin");
+        router.push("/admin/dashboard");
       } else {
         // Default navigation if no role is set (defaults to employee)
         console.warn("No role found in localStorage, defaulting to employee");
-        router.push("/employee");
       }
     }, 1000);
   };

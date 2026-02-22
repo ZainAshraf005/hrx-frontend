@@ -9,8 +9,9 @@ import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-} from "@ant-design/icons";
+} from "@/components/icons/Icons";
 import { useRouter } from "next/navigation";
+import LogoutModal from "@/components/Modal/LogoutModal";
 
 interface HeaderProps {
   onToggleSidebar?: () => void;
@@ -23,16 +24,31 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   // Get user info from localStorage
   const userEmail = localStorage.getItem("userEmail") || "user@example.com";
   const userRole = localStorage.getItem("userRole") || "employee";
 
+  const showLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+  };
+
   const handleLogout = () => {
+    // Clear all localStorage data
     localStorage.removeItem("authToken");
     localStorage.removeItem("userRole");
     localStorage.removeItem("userEmail");
-    router.push("/auth/login");
+    
+    // Close modal
+    setIsLogoutModalOpen(false);
+    
+    // Navigate to home page
+    router.push("/");
+  };
+
+  const handleCancelLogout = () => {
+    setIsLogoutModalOpen(false);
   };
 
   const userMenuItems = [
@@ -46,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({
       key: "settings",
       icon: <SettingOutlined />,
       label: "Settings",
-      onClick: () => console.log("Settings clicked"),
+      onClick: () => router.push("/orgnization/settings"),
     },
     {
       type: "divider" as const,
@@ -55,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({
       key: "logout",
       icon: <LogoutOutlined />,
       label: "Logout",
-      onClick: handleLogout,
+      onClick: showLogoutModal,
       danger: true,
     },
   ];
@@ -178,6 +194,13 @@ const Header: React.FC<HeaderProps> = ({
           </Dropdown>
         </div>
       </div>
+
+      {/* Logout Modal */}
+      <LogoutModal
+        open={isLogoutModalOpen}
+        onConfirm={handleLogout}
+        onCancel={handleCancelLogout}
+      />
     </header>
   );
 };
