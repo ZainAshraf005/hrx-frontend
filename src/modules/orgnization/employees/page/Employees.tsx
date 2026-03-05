@@ -7,7 +7,7 @@ import {
   PlusOutlined,
   MailOutlined,
   PhoneOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 
 const Employees: React.FC = () => {
   const [searchText, setSearchText] = useState("");

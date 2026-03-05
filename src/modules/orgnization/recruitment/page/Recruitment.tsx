@@ -9,8 +9,8 @@ import {
   FileTextOutlined,
   RobotOutlined,
   UserOutlined,
-} from "@/components/icons/Icons";
-import { PlusCircleOutlined } from "@ant-design/icons";
+  PlusOutlined,
+} from "@ant-design/icons";
 
 const Recruitment: React.FC = () => {
   const stats = [

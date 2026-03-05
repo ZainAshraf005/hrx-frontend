@@ -11,7 +11,7 @@ import {
   FileTextOutlined,
   SettingOutlined,
   LogoutOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 import LogoutModal from "@/components/Modal/LogoutModal";
 
 interface SidebarItem {

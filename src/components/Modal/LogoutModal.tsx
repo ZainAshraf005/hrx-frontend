@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Modal } from "antd";
-import { LogoutOutlined, ExclamationCircleOutlined } from "@/components/icons/Icons";
+import { LogoutOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 
 interface LogoutModalProps {
   open: boolean;
