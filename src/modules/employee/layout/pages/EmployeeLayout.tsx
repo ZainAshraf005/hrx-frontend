@@ -7,6 +7,8 @@ interface EmployeeLayoutProps {
   children: React.ReactNode;
 }
 
+
+
 const EmployeeLayout: React.FC<EmployeeLayoutProps> = ({ children }) => {
   return (
     <Layout
