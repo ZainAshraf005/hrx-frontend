@@ -8,7 +8,7 @@ import {
   ClockCircleOutlined,
   UserOutlined,
   RobotOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 import type { Dayjs } from "dayjs";
 
 const Attendance: React.FC = () => {

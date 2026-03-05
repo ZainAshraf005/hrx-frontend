@@ -7,7 +7,7 @@ import {
   BellOutlined,
   SafetyOutlined,
   TeamOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 
 const Settings: React.FC = () => {
   const [form] = Form.useForm();

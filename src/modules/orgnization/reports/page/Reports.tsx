@@ -7,7 +7,7 @@ import {
   TeamOutlined,
   CalendarOutlined,
   DashboardOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 
 const { RangePicker } = DatePicker;
 

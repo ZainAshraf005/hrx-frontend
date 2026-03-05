@@ -9,7 +9,7 @@ import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import LogoutModal from "@/components/Modal/LogoutModal";
 
@@ -25,10 +25,43 @@ const Header: React.FC<HeaderProps> = ({
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const [userRole, setUserRole] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Get user info from localStorage
-  const userEmail = localStorage.getItem("userEmail") || "user@example.com";
-  const userRole = localStorage.getItem("userRole") || "employee";
+  // Get user info from localStorage on client side only
+  React.useEffect(() => {
+    setIsMounted(true);
+    setUserEmail(localStorage.getItem("userEmail") || "user@example.com");
+    setUserRole(localStorage.getItem("userRole") || "employee");
+  }, []);
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!isMounted) {
+    return (
+      <header className="bg-white shadow-sm border-b border-gray-200 w-full transition-all duration-300">
+        <div className="h-16 px-6 flex items-center justify-between w-full">
+          <div className="flex items-center space-x-4 flex-1">
+            {onToggleSidebar && (
+              <button
+                onClick={onToggleSidebar}
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors"
+              >
+                {isSidebarCollapsed ? (
+                  <MenuUnfoldOutlined className="text-xl" />
+                ) : (
+                  <MenuFoldOutlined className="text-xl" />
+                )}
+              </button>
+            )}
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="w-10 h-10 bg-gray-200 rounded-full animate-pulse"></div>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   const showLogoutModal = () => {
     setIsLogoutModalOpen(true);

@@ -5,7 +5,7 @@ import {
   RobotOutlined,
   SendOutlined,
   UserOutlined,
-} from "@/components/icons/Icons";
+} from "@ant-design/icons";
 
 interface Message {
   id: number;
