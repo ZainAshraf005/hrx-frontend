@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { HrAuth } from "@/assets/image";
-// import { Logo } from "@/assets/image"; // update to your logo import path
 
 interface AuthLayoutProps {
   children: React.ReactNode;

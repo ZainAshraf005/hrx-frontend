@@ -248,7 +248,7 @@ const Recruitment: React.FC = () => {
         </div>
         <Button
           type="primary"
-          icon={<PlusCircleOutlined />}
+          icon={<PlusOutlined />}
           size="large"
           className="bg-blue-600 hover:bg-blue-700"
         >

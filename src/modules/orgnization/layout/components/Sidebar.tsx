@@ -12,7 +12,7 @@ import {
   SettingOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import LogoutModal from "@/components/Modal/LogoutModal";
+import LogoutModal from "@/components/modal/LogoutModal";
 
 interface SidebarItem {
   name: string;
