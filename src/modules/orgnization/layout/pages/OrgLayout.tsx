@@ -2,7 +2,7 @@
 import { Layout } from "antd";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import Header from "@/components/Header/Header";
+import Header from "@/components/header/Header";
 
 const { Content, Sider } = Layout;
 

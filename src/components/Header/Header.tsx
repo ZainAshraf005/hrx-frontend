@@ -11,7 +11,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-import LogoutModal from "@/components/Modal/LogoutModal";
+import LogoutModal from "@/components/modal/LogoutModal";
 
 interface HeaderProps {
   onToggleSidebar?: () => void;
