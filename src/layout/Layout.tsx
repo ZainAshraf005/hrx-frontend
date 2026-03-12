@@ -1,8 +1,8 @@
 "use client";
 import { Layout } from "antd";
 import { useState, useEffect } from "react";
-import Sidebar from "@/layout/components/Sidebar";
-import Header from "@/layout/components/Header";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 
 const { Content, Sider } = Layout;
 
