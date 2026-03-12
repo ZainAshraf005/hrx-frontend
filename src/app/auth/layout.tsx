@@ -1,9 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-// import { useAuth } from "@/hooks/AuthContext/AuthContext";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "../style.css";
 import AuthLayout from "@/modules/auth/layout/page/AuthLayout";
 
 interface RootLayoutProps {

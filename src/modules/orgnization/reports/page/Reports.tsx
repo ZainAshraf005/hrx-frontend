@@ -194,7 +194,7 @@ const Reports: React.FC = () => {
             <Col xs={24} sm={12} lg={6} key={index}>
               <Card
                 className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-                bodyStyle={{ padding: "24px" }}
+                style={{ padding: "24px" }}
               >
                 <div className={`${report.bgColor} p-4 rounded-lg mb-4 w-fit`}>
                   {report.icon}

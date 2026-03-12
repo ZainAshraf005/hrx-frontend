@@ -166,7 +166,7 @@ const Recruitment: React.FC = () => {
           <Progress
             type="circle"
             percent={score}
-            width={40}
+            size={40}
             strokeColor={score >= 80 ? "#10b981" : score >= 60 ? "#f59e0b" : "#ef4444"}
           />
           <span className="font-semibold text-gray-700">{score}%</span>
