@@ -12,13 +12,22 @@ import {
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import LogoutModal from "@/components/modal/LogoutModal";
+import type { AppRole } from "@/layout/Layout";
+
+const SETTINGS_PATH_BY_ROLE: Record<AppRole, string> = {
+  admin: "/admin/settings",
+  organization: "/orgnization/settings",
+  employee: "/employee/settings",
+};
 
 interface HeaderProps {
+  role: AppRole;
   onToggleSidebar?: () => void;
   isSidebarCollapsed?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
+  role,
   onToggleSidebar,
   isSidebarCollapsed = false,
 }) => {
@@ -69,10 +78,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const handleLogout = () => {
     // Clear all localStorage data
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("userRole");
-    localStorage.removeItem("userEmail");
-    
+    localStorage.clear();
     // Close modal
     setIsLogoutModalOpen(false);
     
@@ -95,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({
       key: "settings",
       icon: <SettingOutlined />,
       label: "Settings",
-      onClick: () => router.push("/orgnization/settings"),
+      onClick: () => router.push(SETTINGS_PATH_BY_ROLE[role]),
     },
     {
       type: "divider" as const,

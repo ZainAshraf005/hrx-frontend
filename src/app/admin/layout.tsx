@@ -1,31 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
-// import { useAuth } from "@/hooks/AuthContext/AuthContext";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "../style.css";
-import AdminLayout from "@/modules/admin/layout/pages/AdminLayout";
+import MyLayout from "@/layout/Layout";
 
-interface RootLayoutProps {
+interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
-  const router = useRouter();
-//   const { isAuthenticated, authFlag, userType } = useAuth();
-//   const [valid, setValid] = React.useState(false);
-//   useEffect(() => {
-//     if (!isAuthenticated) {
-//       router.push("/admin/auth/login");
-//     }
-//     if (isAuthenticated && userType != "admin") {
-//       router.push("/");
-//     }
-//     if (isAuthenticated && userType == "admin") {
-//       setValid(true);
-//        router.push("/admin/dashboard");
-//     }
-//   }, [isAuthenticated, authFlag, router]);
-//   return valid && <AdminLayout>{children}</AdminLayout>;
-  return <AdminLayout>{children}</AdminLayout>;
+export default function AdminLayout({ children }: AdminLayoutProps) {
+  return <MyLayout>{children}</MyLayout>;
 }

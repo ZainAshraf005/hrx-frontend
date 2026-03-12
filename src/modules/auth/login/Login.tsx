@@ -168,12 +168,12 @@ const Login: React.FC = () => {
           </button>
           <button
             onClick={() => {
-              localStorage.setItem("userRole", "hr");
-              setCurrentRole("hr");
+              localStorage.setItem("userRole", "organization");
+              setCurrentRole("organization");
             }}
             className="px-4 py-2 bg-purple-100 text-purple-700 rounded-md hover:bg-purple-200 text-sm font-medium transition-colors"
           >
-            HR/Organization
+            Organization
           </button>
           <button
             onClick={() => {
